@@ -52,7 +52,7 @@ class Highlighter {
     final bracketStack = <String>[];
     int currentIndex = 0;
 
-    final Map<Pattern, TokenType> patterns = {
+    final patterns = <Pattern, TokenType>{
       RegExp(r'\b(import|const|void)\b'): TokenType.specialKeyword,
       RegExp(r'\b(@override|return)\b'): TokenType.storageModifier,
       RegExp(
