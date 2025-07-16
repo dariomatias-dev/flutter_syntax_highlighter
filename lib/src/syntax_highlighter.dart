@@ -1,0 +1,102 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_syntax_highlighter/src/highlighter.dart';
+import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
+import 'package:flutter_syntax_highlighter/src/token_type.dart';
+
+class SyntaxHighlighter extends StatelessWidget {
+  const SyntaxHighlighter({
+    super.key,
+    required this.code,
+    this.isDarkMode = false,
+    this.fontSize = 14.0,
+    this.lineHeight = 1.35,
+  });
+
+  final String code;
+  final bool isDarkMode;
+  final double fontSize;
+  final double lineHeight;
+
+  double _calculateLineWidth({
+    required double fontSize,
+    required double lineHeight,
+    required int maxLineNumberDigits,
+  }) {
+    const characterWidthFactor = 0.6;
+    const extraSpacing = 8.0;
+
+    final characterWidth = fontSize * characterWidthFactor;
+    final numberWidth = characterWidth * maxLineNumberDigits;
+
+    return numberWidth + extraSpacing;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final baseTheme = isDarkMode ? SyntaxTheme.dark() : SyntaxTheme.light();
+    final theme = baseTheme.copyWithFontSize(fontSize);
+    final highlighter = Highlighter(theme);
+
+    final tokens = highlighter.tokenize(code);
+    final lineWidgets = <Widget>[];
+    var currentLineSpans = <TextSpan>[];
+    var lineNumber = 1;
+
+    final lineCount = '\n'.allMatches(code).length + 1;
+    final maxDigits = lineCount.toString().length;
+
+    final lineWidth = _calculateLineWidth(
+      fontSize: fontSize,
+      lineHeight: lineHeight,
+      maxLineNumberDigits: maxDigits,
+    );
+
+    for (final token in tokens) {
+      if (token.type == TokenType.newline) {
+        final lineWidget = Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SelectionContainer.disabled(
+              child: Container(
+                padding: const EdgeInsets.only(right: 8.0),
+                width: lineWidth,
+                child: Text(
+                  lineNumber.toString(),
+                  textAlign: TextAlign.right,
+                  style: theme.lineNumberStyle.copyWith(height: lineHeight),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text.rich(
+                TextSpan(
+                  style: theme.baseStyle.copyWith(height: lineHeight),
+                  children: currentLineSpans,
+                ),
+              ),
+            ),
+          ],
+        );
+        lineWidgets.add(lineWidget);
+
+        currentLineSpans = [];
+        lineNumber++;
+      } else {
+        currentLineSpans.add(
+          TextSpan(
+            text: token.value,
+            style: highlighter.getStyleForToken(token),
+          ),
+        );
+      }
+    }
+
+    return SelectionArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: lineWidgets,
+      ),
+    );
+  }
+}

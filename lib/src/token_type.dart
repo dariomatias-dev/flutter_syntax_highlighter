@@ -1,0 +1,16 @@
+enum TokenType {
+  identifier,
+  keyword,
+  specialKeyword,
+  storageModifier,
+  type,
+  function,
+  literal,
+  comment,
+  punctuation,
+  string,
+  number,
+  bracket,
+  newline,
+  variable,
+}
