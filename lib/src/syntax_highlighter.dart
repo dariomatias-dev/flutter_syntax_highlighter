@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_syntax_highlighter/src/highlighter.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
@@ -39,6 +38,7 @@ class SyntaxHighlighter extends StatelessWidget {
     final highlighter = Highlighter(theme);
 
     final tokens = highlighter.tokenize(code);
+
     final lineWidgets = <Widget>[];
     var currentLineSpans = <TextSpan>[];
     var lineNumber = 1;
@@ -54,31 +54,32 @@ class SyntaxHighlighter extends StatelessWidget {
 
     for (final token in tokens) {
       if (token.type == TokenType.newline) {
-        final lineWidget = Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SelectionContainer.disabled(
-              child: Container(
-                padding: const EdgeInsets.only(right: 8.0),
-                width: lineWidth,
-                child: Text(
-                  lineNumber.toString(),
-                  textAlign: TextAlign.right,
-                  style: theme.lineNumberStyle.copyWith(height: lineHeight),
+        lineWidgets.add(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SelectionContainer.disabled(
+                child: Container(
+                  width: lineWidth,
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    lineNumber.toString(),
+                    textAlign: TextAlign.right,
+                    style: theme.lineNumberStyle.copyWith(height: lineHeight),
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Text.rich(
-                TextSpan(
-                  style: theme.baseStyle.copyWith(height: lineHeight),
-                  children: currentLineSpans,
+              Expanded(
+                child: Text.rich(
+                  TextSpan(
+                    style: theme.baseStyle.copyWith(height: lineHeight),
+                    children: currentLineSpans,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
-        lineWidgets.add(lineWidget);
 
         currentLineSpans = [];
         lineNumber++;
