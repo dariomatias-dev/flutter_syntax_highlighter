@@ -4,7 +4,7 @@ import 'package:flutter_syntax_highlighter/src/highlighter.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
-/// Displays Dart/Flutter source code with syntax highlighting and line numbers.
+/// Displays Dart/Flutter source code with syntax highlighting and optional line numbers and selection.
 class SyntaxHighlighter extends StatelessWidget {
   const SyntaxHighlighter({
     super.key,
@@ -12,25 +12,27 @@ class SyntaxHighlighter extends StatelessWidget {
     this.isDarkMode = false,
     this.fontSize = 14.0,
     this.lineHeight = 1.35,
+    this.showLineNumbers = true,
+    this.enableCodeSelection = true,
   });
 
   /// The Dart/Flutter source code to be highlighted.
   final String code;
 
   /// Whether to use the dark theme.
-  ///
-  /// Defaults to `false`.
   final bool isDarkMode;
 
   /// Font size for the code.
-  ///
-  /// Defaults to `14.0`.
   final double fontSize;
 
   /// Line height for the code.
-  ///
-  /// Defaults to `1.35`.
   final double lineHeight;
+
+  /// Whether to show line numbers.
+  final bool showLineNumbers;
+
+  /// Whether to enable code selection.
+  final bool enableCodeSelection;
 
   double _calculateLineWidth({
     required double fontSize,
@@ -73,17 +75,18 @@ class SyntaxHighlighter extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SelectionContainer.disabled(
-                child: Container(
-                  width: lineWidth,
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Text(
-                    lineNumber.toString(),
-                    textAlign: TextAlign.right,
-                    style: theme.lineNumberStyle.copyWith(height: lineHeight),
+              if (showLineNumbers)
+                SelectionContainer.disabled(
+                  child: Container(
+                    width: lineWidth,
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      lineNumber.toString(),
+                      textAlign: TextAlign.right,
+                      style: theme.lineNumberStyle.copyWith(height: lineHeight),
+                    ),
                   ),
                 ),
-              ),
               Expanded(
                 child: Text.rich(
                   TextSpan(
@@ -108,11 +111,11 @@ class SyntaxHighlighter extends StatelessWidget {
       }
     }
 
-    return SelectionArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: lineWidgets,
-      ),
+    final codeBlock = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: lineWidgets,
     );
+
+    return enableCodeSelection ? SelectionArea(child: codeBlock) : codeBlock;
   }
 }
