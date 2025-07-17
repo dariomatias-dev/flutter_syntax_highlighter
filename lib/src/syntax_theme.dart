@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Defines the color and style configuration for syntax highlighting.
+///
+/// Contains [TextStyle]s for various token types and line numbers.
+/// Provides preset light and dark themes and font size customization.
 class SyntaxTheme {
   const SyntaxTheme({
     required this.baseStyle,
@@ -20,23 +24,55 @@ class SyntaxTheme {
     required this.variableStyle,
   });
 
+  /// Default text style for general code.
   final TextStyle baseStyle;
+
+  /// Style for line numbers.
   final TextStyle lineNumberStyle;
+
+  /// Style for keywords (e.g. `if`, `for`).
   final TextStyle keywordStyle;
+
+  /// Style for special keywords (e.g. `return`, `yield`).
   final TextStyle specialKeywordStyle;
+
+  /// Style for storage modifiers (e.g. `const`, `final`).
   final TextStyle storageModifierStyle;
+
+  /// Style for type names (e.g. `int`, `String`).
   final TextStyle typeStyle;
+
+  /// Style for function and method names.
   final TextStyle functionStyle;
+
+  /// Style for literals (e.g. `true`, `null`).
   final TextStyle literalStyle;
+
+  /// Style for comments.
   final TextStyle commentStyle;
+
+  /// Style for punctuation characters.
   final TextStyle punctuationStyle;
+
+  /// Style for string literals.
   final TextStyle stringStyle;
+
+  /// Style for numeric literals.
   final TextStyle numberStyle;
+
+  /// Style for first kind of brackets.
   final TextStyle bracket1Style;
+
+  /// Style for second kind of brackets.
   final TextStyle bracket2Style;
+
+  /// Style for third kind of brackets.
   final TextStyle bracket3Style;
+
+  /// Style for variables.
   final TextStyle variableStyle;
 
+  /// Returns a copy of this theme with all font sizes replaced by [size].
   SyntaxTheme copyWithFontSize(double size) {
     return SyntaxTheme(
       baseStyle: baseStyle.copyWith(fontSize: size),
@@ -58,6 +94,7 @@ class SyntaxTheme {
     );
   }
 
+  /// Returns a predefined dark theme.
   static SyntaxTheme dark() {
     return const SyntaxTheme(
       baseStyle: TextStyle(color: Color(0xFFAEDCFF)),
@@ -79,6 +116,7 @@ class SyntaxTheme {
     );
   }
 
+  /// Returns a predefined light theme.
   static SyntaxTheme light() {
     return const SyntaxTheme(
       baseStyle: TextStyle(color: Color(0xFF333333)),
