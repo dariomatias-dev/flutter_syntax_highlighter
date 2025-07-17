@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_syntax_highlighter/src/highlighter.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
+/// Displays Dart/Flutter source code with syntax highlighting and line numbers.
 class SyntaxHighlighter extends StatelessWidget {
   const SyntaxHighlighter({
     super.key,
@@ -12,9 +14,22 @@ class SyntaxHighlighter extends StatelessWidget {
     this.lineHeight = 1.35,
   });
 
+  /// The Dart/Flutter source code to be highlighted.
   final String code;
+
+  /// Whether to use the dark theme.
+  ///
+  /// Defaults to `false`.
   final bool isDarkMode;
+
+  /// Font size for the code.
+  ///
+  /// Defaults to `14.0`.
   final double fontSize;
+
+  /// Line height for the code.
+  ///
+  /// Defaults to `1.35`.
   final double lineHeight;
 
   double _calculateLineWidth({
