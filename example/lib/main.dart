@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Syntax Highlighter'),
-          actions: [
+          actions: <Widget>[
             IconButton(
               icon: Icon(_isDarkMode ? Icons.light_mode : Icons.dark_mode),
               onPressed: _toggleTheme,
