@@ -4,13 +4,10 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 
 ### Screenshots
 
-| Light Theme                                      | Dark Theme                                     |
-| ------------------------------------------------ | ---------------------------------------------- |
-| ![Light Theme](doc/screenshots/light_theme.jpg) | ![Dark Theme](doc/screenshots/dark_theme.jpg) |
-
-## Video
-
-[Watch the video demo](doc/videos/demo.mp4)
+<div>
+  <img src="screenshots/light_theme.jpg" width="200" />
+  <img src="screenshots/dark_theme.jpg" width="200" />
+</div>
 
 ## Installation
 
