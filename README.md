@@ -4,7 +4,7 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 
 ### Screenshots
 
-<img src="screenshots/light_theme.jpg" width="300" /> <img src="screenshots/dark_theme.jpg" width="300" />
+<img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/light_theme.jpg" width="300" /> <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/dark_theme.jpg" width="300" />
 
 ## Installation
 
