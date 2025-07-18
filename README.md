@@ -165,6 +165,10 @@ class _MyAppState extends State<MyApp> {
 | `showLineNumbers`     | `bool`   | Displays line numbers next to the code.     |
 | `enableCodeSelection` | `bool`   | Allows selection of the displayed text.     |
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 # Author
 This Flutter package was developed by [Dário Matias](https://github.com/dariomatias-dev).
 
