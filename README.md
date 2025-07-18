@@ -5,8 +5,8 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 ### Screenshots
 
 <div>
-  <img src="screenshots/light_theme.jpg" width="200" />
-  <img src="screenshots/dark_theme.jpg" width="200" />
+  <img src="screenshots/light_theme.jpg" width="300" />
+  <img src="screenshots/dark_theme.jpg" width="300" />
 </div>
 
 ## Installation
