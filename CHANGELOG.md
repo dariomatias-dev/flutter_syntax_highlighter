@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Fixed screenshot display.
+
 ## 0.1.1
 
 * Image width adjusted, demo video removed, and screenshots folder moved to the root of the package.
