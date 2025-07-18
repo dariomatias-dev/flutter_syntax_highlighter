@@ -1,6 +1,6 @@
 # Flutter Syntax Highlighter
 
-Widget for Dart and Flutter code syntax highlighting, with support for light and dark themes, line numbering, and code selection.
+A widget for syntax highlighting of Dart and Flutter code, with support for light and dark themes, line numbers, and code selection.
 
 ### Screenshots
 
