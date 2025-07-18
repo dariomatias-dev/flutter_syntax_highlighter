@@ -6,11 +6,11 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 
 | Light Theme                                      | Dark Theme                                     |
 | ------------------------------------------------ | ---------------------------------------------- |
-| ![Light Theme](docs/screenshots/light_theme.jpg) | ![Dark Theme](docs/screenshots/dark_theme.jpg) |
+| ![Light Theme](doc/screenshots/light_theme.jpg) | ![Dark Theme](doc/screenshots/dark_theme.jpg) |
 
 ## Video
 
-[Watch the video demo](docs/videos/demo.mp4)
+[Watch the video demo](doc/videos/demo.mp4)
 
 ## Installation
 
