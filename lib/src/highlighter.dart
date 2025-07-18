@@ -46,19 +46,20 @@ class Highlighter {
   }
 
   static final Map<RegExp, TokenType> _patterns = {
-    RegExp(r'\b(import|const|void)\b'): TokenType.specialKeyword,
+    RegExp(r'//[^\n]*'): TokenType.comment,
+    RegExp(r'/\*[\s\S]*?\*/'): TokenType.comment,
+    RegExp(
+      r'\b(import|const|void|extends|class|static|final|var|new|this|super|with|enum|assert|export|part|library)\b',
+    ): TokenType.specialKeyword,
     RegExp(r'\b(@override|return)\b'): TokenType.storageModifier,
     RegExp(
-      r'\b(extends|class|final|var|new|this|super|if|else|for|while|do|switch|case|default|break|continue|as|is|in|throw|try|catch|finally|async|await|yield|export|part|library|with|enum|assert)\b',
+      r'\b(if|else|for|while|do|switch|case|default|break|continue|as|is|in|throw|try|catch|finally|async|await|yield)\b',
     ): TokenType.keyword,
     RegExp(r'\b(_?[A-Z][a-zA-Z0-9]*|int|double|String|bool)\b'): TokenType.type,
     RegExp(r'\b(setState|build|main|runApp|createState|of)\b'):
         TokenType.function,
+    RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*(?=\()'): TokenType.function,
     RegExp(r'\b(true|false|null)\b'): TokenType.literal,
-    RegExp(r'//[^\n]*'): TokenType.comment,
-    RegExp(r'/\*[\s\S]*?\*/'): TokenType.comment,
-    RegExp(r"'.*?'"): TokenType.string,
-    RegExp(r'".*?"'): TokenType.string,
     RegExp(r'\b\d+(\.\d+)?\b'): TokenType.number,
     RegExp(r'[\.,;:?]'): TokenType.punctuation,
     RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'): TokenType.variable,
@@ -75,6 +76,113 @@ class Highlighter {
 
     while (currentIndex < source.length) {
       final currentChar = source[currentIndex];
+
+      if (currentChar == "'" || currentChar == '"') {
+        final remainingSource = source.substring(currentIndex);
+        final quoteType =
+            (remainingSource.startsWith("'''") ||
+                remainingSource.startsWith('"""'))
+            ? source.substring(currentIndex, currentIndex + 3)
+            : currentChar;
+
+        tokens.add(SyntaxToken(TokenType.string, quoteType));
+        currentIndex += quoteType.length;
+
+        var stringContentBuffer = '';
+
+        while (currentIndex < source.length) {
+          if (source.substring(currentIndex).startsWith(quoteType)) {
+            if (stringContentBuffer.isNotEmpty) {
+              tokens.add(SyntaxToken(TokenType.string, stringContentBuffer));
+            }
+            tokens.add(SyntaxToken(TokenType.string, quoteType));
+            currentIndex += quoteType.length;
+            break;
+          }
+
+          if (source[currentIndex] == r'\') {
+            if (currentIndex + 1 < source.length) {
+              stringContentBuffer += source.substring(
+                currentIndex,
+                currentIndex + 2,
+              );
+              currentIndex += 2;
+              continue;
+            }
+          }
+
+          if (source[currentIndex] == r'$') {
+            if (stringContentBuffer.isNotEmpty) {
+              tokens.add(SyntaxToken(TokenType.string, stringContentBuffer));
+              stringContentBuffer = '';
+            }
+
+            if (currentIndex + 1 < source.length &&
+                source[currentIndex + 1] == '{') {
+              tokens.add(SyntaxToken(TokenType.punctuation, r'${'));
+              currentIndex += 2;
+
+              int braceLevel = 1;
+              final expressionStartIndex = currentIndex;
+              int expressionEndIndex = -1;
+
+              while (currentIndex < source.length) {
+                if (source[currentIndex] == '{') {
+                  braceLevel++;
+                } else if (source[currentIndex] == '}') {
+                  braceLevel--;
+                  if (braceLevel == 0) {
+                    expressionEndIndex = currentIndex;
+                    break;
+                  }
+                }
+                currentIndex++;
+              }
+
+              if (expressionEndIndex != -1) {
+                final expressionSource = source.substring(
+                  expressionStartIndex,
+                  expressionEndIndex,
+                );
+                final expressionHighlighter = Highlighter(theme);
+                final expressionTokens = expressionHighlighter.tokenize(
+                  expressionSource,
+                );
+                tokens.addAll(
+                  expressionTokens.where((t) => t.type != TokenType.newline),
+                );
+
+                tokens.add(SyntaxToken(TokenType.punctuation, '}'));
+                currentIndex = expressionEndIndex + 1;
+              } else {
+                tokens.add(
+                  SyntaxToken(
+                    TokenType.string,
+                    source.substring(expressionStartIndex - 2),
+                  ),
+                );
+                currentIndex = source.length;
+              }
+            } else {
+              final match = RegExp(
+                r'[a-zA-Z_][a-zA-Z0-9_]*',
+              ).matchAsPrefix(source, currentIndex + 1);
+              if (match != null) {
+                tokens.add(SyntaxToken(TokenType.punctuation, r'$'));
+                tokens.add(SyntaxToken(TokenType.variable, match.group(0)!));
+                currentIndex += 1 + match.group(0)!.length;
+              } else {
+                stringContentBuffer += r'$';
+                currentIndex++;
+              }
+            }
+          } else {
+            stringContentBuffer += source[currentIndex];
+            currentIndex++;
+          }
+        }
+        continue;
+      }
 
       if (currentChar == '\n') {
         tokens.add(SyntaxToken(TokenType.newline, '\n'));

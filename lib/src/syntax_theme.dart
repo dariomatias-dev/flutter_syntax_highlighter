@@ -99,7 +99,7 @@ class SyntaxTheme {
     return const SyntaxTheme(
       baseStyle: TextStyle(color: Color(0xFFAEDCFF)),
       lineNumberStyle: TextStyle(color: Color(0xFF9E9E9E)),
-      keywordStyle: TextStyle(color: Color(0xFF55AFFF)),
+      keywordStyle: TextStyle(color: Color(0xFF569CD6)),
       specialKeywordStyle: TextStyle(color: Color(0xFF569CD6)),
       storageModifierStyle: TextStyle(color: Color(0xFFD670D6)),
       typeStyle: TextStyle(color: Color(0xFF4EE2D0)),
