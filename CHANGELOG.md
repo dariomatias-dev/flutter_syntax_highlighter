@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Image width adjusted, demo video removed, and screenshots folder moved to the root of the package.
+
 ## 0.1.0
 
 * Support for syntax highlighting for Dart and Flutter code.
