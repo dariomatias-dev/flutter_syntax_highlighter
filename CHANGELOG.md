@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Added display of screenshots via URL.
+
 ## 0.1.2
 
 * Fixed screenshot display.
