@@ -14,6 +14,7 @@ class SyntaxHighlighter extends StatelessWidget {
     this.lineHeight = 1.35,
     this.showLineNumbers = true,
     this.enableCodeSelection = true,
+    this.maxCharCount,
   });
 
   /// The Dart/Flutter source code to be highlighted.
@@ -33,6 +34,9 @@ class SyntaxHighlighter extends StatelessWidget {
 
   /// Whether to enable code selection.
   final bool enableCodeSelection;
+
+  /// Maximum number of characters for line numbering.
+  final int? maxCharCount;
 
   double _calculateLineWidth({
     required double fontSize,
@@ -60,8 +64,8 @@ class SyntaxHighlighter extends StatelessWidget {
     var currentLineSpans = <TextSpan>[];
     var lineNumber = 1;
 
-    final lineCount = '\n'.allMatches(code).length + 1;
-    final maxDigits = lineCount.toString().length;
+    final maxDigits =
+        maxCharCount ?? ('\n'.allMatches(code).length + 1).toString().length;
 
     final lineWidth = _calculateLineWidth(
       fontSize: fontSize,
