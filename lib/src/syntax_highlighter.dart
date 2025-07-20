@@ -8,6 +8,7 @@ import 'package:flutter_syntax_highlighter/src/token_type.dart';
 class SyntaxHighlighter extends StatefulWidget {
   const SyntaxHighlighter({
     super.key,
+    this.padding,
     required this.code,
     this.isDarkMode = false,
     this.fontSize = 14.0,
@@ -16,6 +17,9 @@ class SyntaxHighlighter extends StatefulWidget {
     this.enableCodeSelection = true,
     this.maxCharCount,
   });
+
+  /// Padding around the code content.
+  final EdgeInsetsGeometry? padding;
 
   /// The Dart/Flutter source code to be highlighted.
   final String code;
@@ -146,6 +150,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
     final codeBlock = ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
+      padding: widget.padding,
       itemCount: _lines.length,
       itemBuilder: (context, index) {
         final lineNumber = index + 1;
