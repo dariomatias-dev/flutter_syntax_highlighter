@@ -115,12 +115,12 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
     required int maxLineNumberDigits,
   }) {
     const characterWidthFactor = 0.6;
-    const padding = 16.0;
+    const extraSpacing = 8.0;
 
     final characterWidth = fontSize * characterWidthFactor;
     final numberWidth = characterWidth * maxLineNumberDigits;
 
-    return numberWidth + padding;
+    return numberWidth + extraSpacing;
   }
 
   @override
@@ -145,7 +145,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
   Widget build(BuildContext context) {
     final codeBlock = ListView.builder(
       shrinkWrap: true,
-      physics: const ClampingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: _lines.length,
       itemBuilder: (context, index) {
         final lineNumber = index + 1;
