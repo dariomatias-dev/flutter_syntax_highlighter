@@ -69,38 +69,55 @@ class SyntaxHighlighter extends StatelessWidget {
       maxLineNumberDigits: maxDigits,
     );
 
-    for (final token in tokens) {
-      if (token.type == TokenType.newline) {
-        lineWidgets.add(
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              if (showLineNumbers)
-                SelectionContainer.disabled(
-                  child: Container(
-                    width: lineWidth,
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(
-                      lineNumber.toString(),
-                      textAlign: TextAlign.right,
-                      style: theme.lineNumberStyle.copyWith(height: lineHeight),
-                    ),
-                  ),
-                ),
-              Expanded(
-                child: Text.rich(
-                  TextSpan(
-                    style: theme.baseStyle.copyWith(height: lineHeight),
-                    children: currentLineSpans,
+    void addLine() {
+      lineWidgets.add(
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (showLineNumbers)
+              SelectionContainer.disabled(
+                child: Container(
+                  width: lineWidth,
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    lineNumber.toString(),
+                    textAlign: TextAlign.right,
+                    style: theme.lineNumberStyle.copyWith(height: lineHeight),
                   ),
                 ),
               ),
-            ],
-          ),
-        );
+            Expanded(
+              child: Text.rich(
+                TextSpan(
+                  style: theme.baseStyle.copyWith(height: lineHeight),
+                  children: List.of(currentLineSpans),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 
-        currentLineSpans = [];
-        lineNumber++;
+      currentLineSpans.clear();
+      lineNumber++;
+    }
+
+    for (final token in tokens) {
+      if (token.type == TokenType.newline) {
+        addLine();
+      } else if (token.value.contains('\n')) {
+        final lines = token.value.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+          final line = lines[i];
+          if (line.isNotEmpty) {
+            currentLineSpans.add(
+              TextSpan(text: line, style: highlighter.getStyleForToken(token)),
+            );
+          }
+          if (i < lines.length - 1) {
+            addLine();
+          }
+        }
       } else {
         currentLineSpans.add(
           TextSpan(
@@ -109,6 +126,10 @@ class SyntaxHighlighter extends StatelessWidget {
           ),
         );
       }
+    }
+
+    if (currentLineSpans.isNotEmpty) {
+      addLine();
     }
 
     final codeBlock = Column(
