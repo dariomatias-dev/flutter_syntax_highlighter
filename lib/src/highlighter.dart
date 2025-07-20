@@ -4,11 +4,23 @@ import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_token.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
+/// A syntax highlighter that tokenizes and styles source code.
+///
+/// This class parses a source code string into a list of styled tokens
+/// for syntax highlighting purposes.
 class Highlighter {
+  /// The theme that defines the styles for different token types.
   final SyntaxTheme theme;
 
+  /// Creates a new [Highlighter] instance.
+  ///
+  /// The [theme] provides the [TextStyle] for each token type.
   Highlighter(this.theme);
 
+  /// Gets the [TextStyle] for a given [SyntaxToken] based on the theme.
+  ///
+  /// The style is determined by the token's [TokenType]. For brackets,
+  /// the nesting level is used to cycle through three different styles.
   TextStyle getStyleForToken(SyntaxToken token) {
     switch (token.type) {
       case TokenType.bracket:
@@ -45,16 +57,20 @@ class Highlighter {
     }
   }
 
+  /// A map of regular expressions to their corresponding token types.
+  ///
+  /// The order in this map is critical, as patterns are matched sequentially.
+  /// More specific patterns should be placed before more general ones.
   static final Map<RegExp, TokenType> _patterns = {
     RegExp(r'//[^\n]*'): TokenType.comment,
     RegExp(r'/\*[\s\S]*?\*/'): TokenType.comment,
     RegExp(
-      r'\b(import|const|void|extends|class|static|final|var|new|this|super|with|enum|assert|export|part|library)\b',
+      r'\b(import|const|void|extends|class|static|final|var|late|new|this|required|super|with|enum|assert|export|part|library)\b',
     ): TokenType.specialKeyword,
-    RegExp(r'\b(@override|return)\b'): TokenType.storageModifier,
     RegExp(
-      r'\b(if|else|for|while|do|switch|case|default|break|continue|as|is|in|throw|try|catch|finally|async|await|yield)\b',
-    ): TokenType.keyword,
+      r'\b(@override|return|if|else|for|while|do|switch|case|default|break|continue|throw|try|catch|finally|async|await|yield)\b',
+    ): TokenType.storageModifier,
+    RegExp(r'\b(as|is|in)\b'): TokenType.keyword,
     RegExp(r'\b(_?[A-Z][a-zA-Z0-9]*|int|double|String|bool)\b'): TokenType.type,
     RegExp(r'\b(setState|build|main|runApp|createState|of)\b'):
         TokenType.function,
@@ -65,6 +81,11 @@ class Highlighter {
     RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'): TokenType.variable,
   };
 
+  /// Tokenizes a string of source code into a list of [SyntaxToken]s.
+  ///
+  /// The tokenization process parses the input string, identifying syntax
+  /// elements like keywords, strings, comments, and brackets, and converts
+  /// them into a list of tokens.
   List<SyntaxToken> tokenize(String source) {
     if (!source.endsWith('\n')) {
       source += '\n';
@@ -214,8 +235,14 @@ class Highlighter {
     return tokens;
   }
 
+  /// Checks if a character is a whitespace character.
   bool _isWhitespace(String char) => RegExp(r'\s').hasMatch(char);
 
+  /// Attempts to match an opening or closing bracket at the current position.
+  ///
+  /// If a bracket is found, a corresponding [SyntaxToken] is created and
+  /// added to the [tokens] list. The [bracketStack] is updated to track
+  /// the nesting level. Returns `true` if a match is found, `false` otherwise.
   bool _tryMatchBracket(
     String source,
     int currentIndex,
@@ -257,6 +284,11 @@ class Highlighter {
     return false;
   }
 
+  /// Attempts to match one of the predefined regex patterns at the current position.
+  ///
+  /// Iterates through the patterns in [_patterns]. If a match is found,
+  /// a [SyntaxToken] is created and added to the [tokens] list.
+  /// Returns `true` if a match is found, `false` otherwise.
   bool _tryMatchPatterns(
     String source,
     int currentIndex,
