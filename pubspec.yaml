@@ -1,6 +1,6 @@
 name: flutter_syntax_highlighter
 description: "A widget for syntax highlighting of Dart and Flutter code, with support for light and dark themes, line numbers, and code selection."
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/dariomatias-dev/flutter_syntax_highlighter
 
 environment:

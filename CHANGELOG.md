@@ -1,3 +1,7 @@
+## 0.1.5
+
+- Fixed keyword highlighting color in syntax highlighter.
+
 ## 0.1.4
 
 - Added line numbering to multi-line strings.
