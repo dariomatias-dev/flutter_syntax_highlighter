@@ -1,3 +1,7 @@
+## 0.1.6
+- Added `maxCharCount` property to define the maximum number of characters in the line numbering.
+
+
 ## 0.1.5
 
 - Fixed keyword highlighting color in syntax highlighter.
