@@ -8,7 +8,6 @@ import 'package:flutter_syntax_highlighter/src/token_type.dart';
 class SyntaxHighlighter extends StatefulWidget {
   const SyntaxHighlighter({
     super.key,
-    this.padding,
     required this.code,
     this.isDarkMode = false,
     this.fontSize = 14.0,
@@ -17,9 +16,6 @@ class SyntaxHighlighter extends StatefulWidget {
     this.enableCodeSelection = true,
     this.maxCharCount,
   });
-
-  /// Padding around the code content.
-  final EdgeInsetsGeometry? padding;
 
   /// The Dart/Flutter source code to be highlighted.
   final String code;
@@ -72,7 +68,6 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
     _lines = _processCode();
   }
 
-  /// Pre-processes the code into a list of styled [TextSpan]s, one for each line.
   List<TextSpan> _processCode() {
     final tokens = _highlighter.tokenize(widget.code);
     final processedLines = <TextSpan>[];
@@ -81,7 +76,6 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
     for (final token in tokens) {
       if (token.type == TokenType.newline) {
         processedLines.add(TextSpan(children: List.of(currentLineSpans)));
-
         currentLineSpans.clear();
       } else if (token.value.contains('\n')) {
         final linesInToken = token.value.split('\n');
@@ -147,15 +141,14 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
   @override
   Widget build(BuildContext context) {
-    final codeBlock = ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: widget.padding,
-      itemCount: _lines.length,
-      itemBuilder: (context, index) {
-        final lineNumber = index + 1;
+    final lineWidgets = <Widget>[];
 
-        return Row(
+    for (int index = 0; index < _lines.length; index++) {
+      final line = _lines[index];
+      final lineNumber = index + 1;
+
+      lineWidgets.add(
+        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             if (widget.showLineNumbers)
@@ -174,13 +167,18 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
               ),
             Expanded(
               child: Text.rich(
-                _lines[index],
+                line,
                 style: _theme.baseStyle.copyWith(height: widget.lineHeight),
               ),
             ),
           ],
-        );
-      },
+        ),
+      );
+    }
+
+    final codeBlock = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: lineWidgets,
     );
 
     return widget.enableCodeSelection

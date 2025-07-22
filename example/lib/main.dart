@@ -111,9 +111,9 @@ class _MyAppState extends State<MyApp> {
               SizedBox(height: 12.0),
               Expanded(
                 child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(8.0),
                   child: SyntaxHighlighter(
                     code: sampleCode,
-                    padding: const EdgeInsets.all(8.0),
                     isDarkMode: _isDarkMode,
                     showLineNumbers: _showLineNumbers,
                     enableCodeSelection: _enableCodeSelection,
