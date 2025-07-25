@@ -1,6 +1,9 @@
+## 0.1.7
+
+- Added `lineNumberOffset` property to define the initial value of line numbering.
+
 ## 0.1.6
 - Added `maxCharCount` property to define the maximum number of characters in the line numbering.
-
 
 ## 0.1.5
 
