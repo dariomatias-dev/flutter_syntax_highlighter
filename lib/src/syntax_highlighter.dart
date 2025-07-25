@@ -15,6 +15,7 @@ class SyntaxHighlighter extends StatefulWidget {
     this.showLineNumbers = true,
     this.enableCodeSelection = true,
     this.maxCharCount,
+    this.lineNumberOffset = 1,
   });
 
   /// The Dart/Flutter source code to be highlighted.
@@ -38,6 +39,9 @@ class SyntaxHighlighter extends StatefulWidget {
   /// Maximum number of characters for line numbering.
   final int? maxCharCount;
 
+  // Initial value for line numbering.
+  final int lineNumberOffset;
+
   @override
   State<SyntaxHighlighter> createState() => _SyntaxHighlighterState();
 }
@@ -58,7 +62,9 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     _maxDigits =
         widget.maxCharCount ??
-        ('\n'.allMatches(widget.code).length + 1).toString().length;
+        (('\n'.allMatches(widget.code).length + widget.lineNumberOffset)
+            .toString()
+            .length);
 
     _lineNumberWidth = _calculateLineNumberWidth(
       fontSize: widget.fontSize,
@@ -134,7 +140,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     if (oldWidget.code != widget.code ||
         oldWidget.isDarkMode != widget.isDarkMode ||
-        oldWidget.fontSize != widget.fontSize) {
+        oldWidget.fontSize != widget.fontSize ||
+        oldWidget.lineNumberOffset != widget.lineNumberOffset) {
       _setupAndProcess();
     }
   }
@@ -145,7 +152,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     for (int index = 0; index < _lines.length; index++) {
       final line = _lines[index];
-      final lineNumber = index + 1;
+      final lineNumber = widget.lineNumberOffset + index;
 
       lineWidgets.add(
         Row(
