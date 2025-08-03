@@ -1,5 +1,10 @@
 # Flutter Syntax Highlighter
 
+[![pub package](https://img.shields.io/pub/v/flutter_syntax_highlighter.svg)](https://pub.dev/packages/flutter_syntax_highlighter)
+[![likes](https://img.shields.io/pub/likes/flutter_syntax_highlighter)](https://pub.dev/packages/flutter_syntax_highlighter/score)
+[![points](https://img.shields.io/pub/points/flutter_syntax_highlighter)](https://pub.dev/packages/flutter_syntax_highlighter/score)
+[![popularity](https://img.shields.io/pub/popularity/flutter_syntax_highlighter)](https://pub.dev/packages/flutter_syntax_highlighter/score)
+
 A widget for syntax highlighting of Dart and Flutter code, with support for light and dark themes, line numbers, and code selection.
 
 ### Screenshots
