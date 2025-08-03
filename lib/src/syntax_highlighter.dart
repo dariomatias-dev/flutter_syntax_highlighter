@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_syntax_highlighter/src/highlighter.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
+import 'package:flutter_syntax_highlighter/src/syntax_themes.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
 /// Displays Dart/Flutter source code with syntax highlighting and optional line numbers and selection.
@@ -10,6 +11,8 @@ class SyntaxHighlighter extends StatefulWidget {
     super.key,
     required this.code,
     this.isDarkMode = false,
+    this.lightTheme,
+    this.darkTheme,
     this.fontSize = 14.0,
     this.lineHeight = 1.35,
     this.showLineNumbers = true,
@@ -23,6 +26,12 @@ class SyntaxHighlighter extends StatefulWidget {
 
   /// Whether to use the dark theme.
   final bool isDarkMode;
+
+  /// The syntax theme to use when the brightness is light.
+  final SyntaxTheme? lightTheme;
+
+  /// The syntax theme to use when the brightness is dark.
+  final SyntaxTheme? darkTheme;
 
   /// Font size for the code.
   final double fontSize;
@@ -39,7 +48,7 @@ class SyntaxHighlighter extends StatefulWidget {
   /// Maximum number of characters for line numbering.
   final int? maxCharCount;
 
-  // Initial value for line numbering.
+  /// Initial value for line numbering.
   final int lineNumberOffset;
 
   @override
@@ -55,8 +64,9 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
   void _setupAndProcess() {
     final baseTheme = widget.isDarkMode
-        ? SyntaxTheme.dark()
-        : SyntaxTheme.light();
+        ? (widget.darkTheme ?? SyntaxThemes.darkHighContrast)
+        : (widget.lightTheme ?? SyntaxThemes.lightHighContrastTheme);
+
     _theme = baseTheme.copyWithFontSize(widget.fontSize);
     _highlighter = Highlighter(_theme);
 
@@ -128,8 +138,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
   }
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     _setupAndProcess();
   }
@@ -140,6 +150,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     if (oldWidget.code != widget.code ||
         oldWidget.isDarkMode != widget.isDarkMode ||
+        oldWidget.lightTheme != widget.lightTheme ||
+        oldWidget.darkTheme != widget.darkTheme ||
         oldWidget.fontSize != widget.fontSize ||
         oldWidget.lineNumberOffset != widget.lineNumberOffset) {
       _setupAndProcess();
