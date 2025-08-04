@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
+import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_token.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
@@ -10,7 +10,7 @@ import 'package:flutter_syntax_highlighter/src/token_type.dart';
 /// for syntax highlighting purposes.
 class Highlighter {
   /// The theme that defines the styles for different token types.
-  final SyntaxTheme theme;
+  final SyntaxColorSchema syntaxColorSchema;
 
   late final RegExp _combinedPattern;
 
@@ -36,8 +36,8 @@ class Highlighter {
 
   /// Creates a new [Highlighter] instance.
   ///
-  /// The [theme] provides the [TextStyle] for each token type.
-  Highlighter(this.theme) {
+  /// The [syntaxColorSchema] provides the [Color] for each token type.
+  Highlighter(this.syntaxColorSchema) {
     _combinedPattern = RegExp(
       _patterns.entries
           .map((entry) => '(?<${entry.key.name}>${entry.value})')
@@ -46,43 +46,43 @@ class Highlighter {
     );
   }
 
-  /// Gets the [TextStyle] for a given [SyntaxToken] based on the theme.
+  /// Gets the [Color] for a given [SyntaxToken] based on the theme.
   ///
-  /// The style is determined by the token's [TokenType]. For brackets,
-  /// the nesting level is used to cycle through three different styles.
-  TextStyle getStyleForToken(SyntaxToken token) {
+  /// The color is determined by the token's [TokenType]. For brackets,
+  /// the nesting level is used to cycle through three different colors.
+  Color getStyleForToken(SyntaxToken token) {
     switch (token.type) {
       case TokenType.bracket:
         final level = token.level % 3;
-        if (level == 0) return theme.bracket1Style;
-        if (level == 1) return theme.bracket2Style;
-        return theme.bracket3Style;
+        if (level == 0) return syntaxColorSchema.bracket1Style;
+        if (level == 1) return syntaxColorSchema.bracket2Style;
+        return syntaxColorSchema.bracket3Style;
 
       case TokenType.keyword:
-        return theme.keywordStyle;
+        return syntaxColorSchema.keywordStyle;
       case TokenType.specialKeyword:
-        return theme.specialKeywordStyle;
+        return syntaxColorSchema.specialKeywordStyle;
       case TokenType.storageModifier:
-        return theme.storageModifierStyle;
+        return syntaxColorSchema.storageModifierStyle;
       case TokenType.type:
-        return theme.typeStyle;
+        return syntaxColorSchema.typeStyle;
       case TokenType.function:
-        return theme.functionStyle;
+        return syntaxColorSchema.functionStyle;
       case TokenType.comment:
-        return theme.commentStyle;
+        return syntaxColorSchema.commentStyle;
       case TokenType.string:
-        return theme.stringStyle;
+        return syntaxColorSchema.stringStyle;
       case TokenType.number:
-        return theme.numberStyle;
+        return syntaxColorSchema.numberStyle;
       case TokenType.literal:
-        return theme.literalStyle;
+        return syntaxColorSchema.literalStyle;
       case TokenType.variable:
-        return theme.variableStyle;
+        return syntaxColorSchema.variableStyle;
       case TokenType.punctuation:
-        return theme.punctuationStyle;
+        return syntaxColorSchema.punctuationStyle;
       case TokenType.identifier:
       case TokenType.newline:
-        return theme.baseStyle;
+        return syntaxColorSchema.baseStyle;
     }
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_syntax_highlighter/src/highlighter.dart';
-import 'package:flutter_syntax_highlighter/src/syntax_theme.dart';
+import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_themes.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
@@ -11,8 +11,8 @@ class SyntaxHighlighter extends StatefulWidget {
     super.key,
     required this.code,
     this.isDarkMode = false,
-    this.lightTheme,
-    this.darkTheme,
+    this.lightColorSchema,
+    this.darkColorSchema,
     this.fontSize = 14.0,
     this.lineHeight = 1.35,
     this.showLineNumbers = true,
@@ -28,10 +28,10 @@ class SyntaxHighlighter extends StatefulWidget {
   final bool isDarkMode;
 
   /// The syntax theme to use when the brightness is light.
-  final SyntaxTheme? lightTheme;
+  final SyntaxColorSchema? lightColorSchema;
 
   /// The syntax theme to use when the brightness is dark.
-  final SyntaxTheme? darkTheme;
+  final SyntaxColorSchema? darkColorSchema;
 
   /// Font size for the code.
   final double fontSize;
@@ -58,17 +58,15 @@ class SyntaxHighlighter extends StatefulWidget {
 class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
   late List<TextSpan> _lines;
   late Highlighter _highlighter;
-  late SyntaxTheme _theme;
+  late SyntaxColorSchema _syntaxColorSchema;
   late int _maxDigits;
   late double _lineNumberWidth;
 
   void _setupAndProcess() {
-    final baseTheme = widget.isDarkMode
-        ? (widget.darkTheme ?? SyntaxThemes.darkHighContrast)
-        : (widget.lightTheme ?? SyntaxThemes.lightHighContrastTheme);
-
-    _theme = baseTheme.copyWithFontSize(widget.fontSize);
-    _highlighter = Highlighter(_theme);
+    _syntaxColorSchema = widget.isDarkMode
+        ? (widget.darkColorSchema ?? SyntaxThemes.darkHighContrast)
+        : (widget.lightColorSchema ?? SyntaxThemes.lightHighContrast);
+    _highlighter = Highlighter(_syntaxColorSchema);
 
     _maxDigits =
         widget.maxCharCount ??
@@ -101,9 +99,10 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
             currentLineSpans.add(
               TextSpan(
                 text: line,
-                style: _highlighter
-                    .getStyleForToken(token)
-                    .copyWith(fontSize: widget.fontSize),
+                style: TextStyle(
+                  color: _highlighter.getStyleForToken(token),
+                  fontSize: widget.fontSize,
+                ),
               ),
             );
           }
@@ -116,9 +115,10 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
         currentLineSpans.add(
           TextSpan(
             text: token.value,
-            style: _highlighter
-                .getStyleForToken(token)
-                .copyWith(fontSize: widget.fontSize),
+            style: TextStyle(
+              color: _highlighter.getStyleForToken(token),
+              fontSize: widget.fontSize,
+            ),
           ),
         );
       }
@@ -157,8 +157,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     if (oldWidget.code != widget.code ||
         oldWidget.isDarkMode != widget.isDarkMode ||
-        oldWidget.lightTheme != widget.lightTheme ||
-        oldWidget.darkTheme != widget.darkTheme ||
+        oldWidget.lightColorSchema != widget.lightColorSchema ||
+        oldWidget.darkColorSchema != widget.darkColorSchema ||
         oldWidget.fontSize != widget.fontSize ||
         oldWidget.lineNumberOffset != widget.lineNumberOffset) {
       _setupAndProcess();
@@ -185,7 +185,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
                   child: Text(
                     lineNumber.toString(),
                     textAlign: TextAlign.right,
-                    style: _theme.lineNumberStyle.copyWith(
+                    style: TextStyle(
+                      color: _syntaxColorSchema.lineNumberStyle,
                       height: widget.lineHeight,
                       fontSize: widget.fontSize,
                     ),
@@ -195,7 +196,10 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
             Expanded(
               child: Text.rich(
                 line,
-                style: _theme.baseStyle.copyWith(height: widget.lineHeight),
+                style: TextStyle(
+                  color: _syntaxColorSchema.baseStyle,
+                  height: widget.lineHeight,
+                ),
               ),
             ),
           ],
