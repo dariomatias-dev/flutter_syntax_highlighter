@@ -99,7 +99,12 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
           final line = linesInToken[i];
           if (line.isNotEmpty) {
             currentLineSpans.add(
-              TextSpan(text: line, style: _highlighter.getStyleForToken(token)),
+              TextSpan(
+                text: line,
+                style: _highlighter
+                    .getStyleForToken(token)
+                    .copyWith(fontSize: widget.fontSize),
+              ),
             );
           }
           if (i < linesInToken.length - 1) {
@@ -111,7 +116,9 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
         currentLineSpans.add(
           TextSpan(
             text: token.value,
-            style: _highlighter.getStyleForToken(token),
+            style: _highlighter
+                .getStyleForToken(token)
+                .copyWith(fontSize: widget.fontSize),
           ),
         );
       }
@@ -180,6 +187,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
                     textAlign: TextAlign.right,
                     style: _theme.lineNumberStyle.copyWith(
                       height: widget.lineHeight,
+                      fontSize: widget.fontSize,
                     ),
                   ),
                 ),

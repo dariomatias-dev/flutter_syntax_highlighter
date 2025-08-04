@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
   bool _isDarkMode = false;
   bool _showLineNumbers = true;
   bool _enableCodeSelection = true;
+  double _fontSize = 14.0;
 
   void _toggleTheme() {
     setState(() {
@@ -108,6 +109,39 @@ class _MyAppState extends State<MyApp> {
                 value: _enableCodeSelection,
                 onChanged: (value) => _toggleCodeSelection(),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Font Size:', style: TextStyle(fontSize: 16.0)),
+                    Row(
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: _fontSize > 14.0
+                              ? () {
+                                  setState(() {
+                                    _fontSize--;
+                                  });
+                                }
+                              : null,
+                          icon: Icon(Icons.remove),
+                        ),
+                        IconButton(
+                          onPressed: _fontSize < 20.0
+                              ? () {
+                                  setState(() {
+                                    _fontSize++;
+                                  });
+                                }
+                              : null,
+                          icon: Icon(Icons.add),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(height: 12.0),
               Expanded(
                 child: SingleChildScrollView(
@@ -117,6 +151,7 @@ class _MyAppState extends State<MyApp> {
                     isDarkMode: _isDarkMode,
                     showLineNumbers: _showLineNumbers,
                     enableCodeSelection: _enableCodeSelection,
+                    fontSize: _fontSize,
                   ),
                 ),
               ),
