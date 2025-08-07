@@ -1,13 +1,15 @@
 import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 import 'package:flutter_syntax_highlighter/src/themes/a11y_dark_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/a11y_light_theme.dart';
-import 'package:flutter_syntax_highlighter/src/themes/androidstudio_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/androidstudio_dark_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/androidstudio_light_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/atom_one_dark_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/atom_one_light_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/cobalt2_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/dark_high_contrast_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/dracula_theme.dart';
-import 'package:flutter_syntax_highlighter/src/themes/github_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/github_dark_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/github_light_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/light_high_contrast_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/material_oceanic_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/monokai_theme.dart';
@@ -22,7 +24,8 @@ import 'package:flutter_syntax_highlighter/src/themes/stackoverflow_light_theme.
 import 'package:flutter_syntax_highlighter/src/themes/synthwave_84_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/vs_code_dark_theme.dart';
 import 'package:flutter_syntax_highlighter/src/themes/vs_code_light_theme.dart';
-import 'package:flutter_syntax_highlighter/src/themes/xcode_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/xcode_dark_theme.dart';
+import 'package:flutter_syntax_highlighter/src/themes/xcode_light_theme.dart';
 
 class SyntaxThemes {
   SyntaxThemes._();
@@ -31,7 +34,11 @@ class SyntaxThemes {
 
   static final SyntaxColorSchema a11yLight = const A11yLightTheme();
 
-  static final SyntaxColorSchema androidstudio = const AndroidStudioTheme();
+  static final SyntaxColorSchema androidstudioDark =
+      const AndroidStudioDarkTheme();
+
+  static final SyntaxColorSchema androidstudioLight =
+      const AndroidStudioLightTheme();
 
   static final SyntaxColorSchema atomOneDark = const AtomOneDarkTheme();
 
@@ -44,7 +51,9 @@ class SyntaxThemes {
 
   static final SyntaxColorSchema dracula = const DraculaTheme();
 
-  static final SyntaxColorSchema github = const GitHubTheme();
+  static final SyntaxColorSchema githubDark = const GitHubDarkTheme();
+
+  static final SyntaxColorSchema githubLight = const GitHubLightTheme();
 
   static final SyntaxColorSchema lightHighContrast =
       const LightHighContrastTheme();
@@ -77,5 +86,7 @@ class SyntaxThemes {
 
   static final SyntaxColorSchema vsCodeLight = const VSCodeLightTheme();
 
-  static final SyntaxColorSchema xcode = const XcodeTheme();
+  static final SyntaxColorSchema xcodeDark = const XcodeDarkTheme();
+
+  static final SyntaxColorSchema xcodeLight = const XcodeLightTheme();
 }

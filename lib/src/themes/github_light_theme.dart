@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 
-class GitHubTheme extends SyntaxColorSchema {
-  const GitHubTheme()
+class GitHubLightTheme extends SyntaxColorSchema {
+  const GitHubLightTheme()
     : super(
         baseStyle: const Color(0xFF24292E),
         lineNumberStyle: const Color(0xFF6A737D),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 
-class AndroidStudioTheme extends SyntaxColorSchema {
-  const AndroidStudioTheme()
+class AndroidStudioDarkTheme extends SyntaxColorSchema {
+  const AndroidStudioDarkTheme()
     : super(
         baseStyle: const Color(0xFFA9B7C6),
         lineNumberStyle: const Color(0xFF606366),
