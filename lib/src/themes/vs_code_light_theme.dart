@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 
 class VSCodeLightTheme extends SyntaxColorSchema {
   const VSCodeLightTheme()
     : super(
         baseStyle: const Color(0xFF000000),
-        lineNumberStyle: const Color(0xFF2b91af),
-        keywordStyle: const Color(0xFF0000ff),
-        specialKeywordStyle: const Color(0xFF0000ff),
-        storageModifierStyle: const Color(0xFF0000ff),
-        typeStyle: const Color(0xFF2b91af),
-        functionStyle: const Color(0xFF000000),
-        literalStyle: const Color(0xFF0000ff),
+        lineNumberStyle: const Color(0xFF858585),
+        keywordStyle: const Color(0xFF0000FF),
+        specialKeywordStyle: const Color(0xFF0000FF),
+        storageModifierStyle: const Color(0xFFAF00DB),
+        typeStyle: const Color(0xFF267F99),
+        functionStyle: const Color(0xFF795E26),
+        literalStyle: const Color(0xFF0000FF),
         commentStyle: const Color(0xFF008000),
         punctuationStyle: const Color(0xFF000000),
-        stringStyle: const Color(0xFFa31515),
-        numberStyle: const Color(0xFF0000ff),
+        stringStyle: const Color(0xFFA31515),
+        numberStyle: const Color(0xFF098658),
         bracket1Style: const Color(0xFF000000),
-        bracket2Style: const Color(0xFF0000ff),
-        bracket3Style: const Color(0xFF2b91af),
-        variableStyle: const Color(0xFF000000),
+        bracket2Style: const Color(0xFF0000FF),
+        bracket3Style: const Color(0xFF267F99),
+        variableStyle: const Color(0xFF001080),
       );
 }
