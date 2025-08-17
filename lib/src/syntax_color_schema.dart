@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 
-/// Defines the color configuration for syntax highlighting.
+/// Defines the contract for all syntax highlighting color schemes.
 ///
-/// Contains [Color]s for various token types and line numbers.
+/// This abstract class provides a structured way to create complete
+/// code highlighting themes, allowing the definition of a specific [Color]
+/// for each token type.
+///
+/// To create a custom theme, extend this class and implement all
+/// the required properties.
+///
+/// ### Example
+/// ```dart
+/// class MyCustomTheme extends SyntaxColorSchema {
+///   const MyCustomTheme()
+///       : super(
+///           baseStyle: const Color(0xFFFFFFFF),
+///           commentStyle: const Color(0xFF9E9E9E),
+///           keywordStyle: const Color(0xFF82AAFF),
+///           // ... other colors
+///         );
+/// }
+/// ```
 abstract class SyntaxColorSchema {
   const SyntaxColorSchema({
     required this.baseStyle,
@@ -23,51 +41,57 @@ abstract class SyntaxColorSchema {
     required this.variableStyle,
   });
 
-  /// Default color for general code.
+  /// Base text color applied to code fragments without a specific style.
+  /// Typically used for plain text, operators, and whitespace.
   final Color baseStyle;
 
-  /// Color for line numbers.
+  /// Color assigned to line numbers displayed in the side gutter.
   final Color lineNumberStyle;
 
-  /// Color for keywords (e.g. `if`, `for`).
+  /// Color for language keywords (e.g., `if`, `for`, `while`, `class`, `void`).
   final Color keywordStyle;
 
-  /// Color for special keywords (e.g. `return`, `yield`).
+  /// Color for special keywords that modify control flow.
+  ///
+  /// Examples: `return`, `await`, `yield`, `break`.
+  /// Can match [keywordStyle] if the theme does not differentiate.
   final Color specialKeywordStyle;
 
-  /// Color for storage modifiers (e.g. `const`, `final`).
+  /// Color applied to storage modifiers (e.g., `const`, `final`, `static`).
   final Color storageModifierStyle;
 
-  /// Color for type names (e.g. `int`, `String`).
+  /// Color for type names, including native types and user-defined classes
+  /// (e.g., `int`, `String`, `List`, `MyClass`).
   final Color typeStyle;
 
-  /// Color for function and method names.
+  /// Color used for function and method names.
   final Color functionStyle;
 
-  /// Color for literals (e.g. `true`, `null`).
+  /// Color for language literals (e.g., `true`, `false`, `null`).
   final Color literalStyle;
 
-  /// Color for comments.
+  /// Color applied to code comments.
   final Color commentStyle;
 
-  /// Color for punctuation characters.
+  /// Color for punctuation characters (e.g., comma, semicolon, colon).
   final Color punctuationStyle;
 
-  /// Color for string literals.
+  /// Color applied to string literals (e.g., `"Hello, World!"`).
   final Color stringStyle;
 
-  /// Color for numeric literals.
+  /// Color used for numeric literals (e.g., `123`, `0.5`, `0xFF`).
   final Color numberStyle;
 
-  /// Color for first kind of brackets.
+  /// Color for the first type of brackets.
   final Color bracket1Style;
 
-  /// Color for second kind of brackets.
+  /// Color for the second type of brackets.
   final Color bracket2Style;
 
-  /// Color for third kind of brackets.
+  /// Color for the third type of brackets.
   final Color bracket3Style;
 
-  /// Color for variables.
+  /// Color applied to variables, including local variables, parameters,
+  /// and class attributes.
   final Color variableStyle;
 }
