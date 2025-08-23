@@ -59,7 +59,7 @@ The package supports multiple themes, both light and dark, and allows for custom
 
 ## Built With
 
-- **[Flutter](https://flutter.dev/)** – A UI toolkit by Google for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.  
+- **[Flutter](https://flutter.dev/)** – A UI toolkit by Google for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
 - **[Dart](https://dart.dev/)** – The programming language used for Flutter, optimized for building fast apps on any platform.
 
 ## Screenshots
@@ -426,18 +426,18 @@ class _MyAppState extends State<MyApp> {
 
 ## Properties
 
-| Property            | Type               | Default                        | Description                                           |
-| ------------------- | ------------------ | ------------------------------ | ----------------------------------------------------- |
-| code                | String             | –                              | The source code to be displayed.                      |
-| isDarkMode          | bool               | false                          | Toggles between light and dark mode.                  |
-| lightColorSchema    | SyntaxColorSchema? | SyntaxThemes.lightHighContrast | Custom color scheme for light mode.                   |
-| darkColorSchema     | SyntaxColorSchema? | SyntaxThemes.darkHighContrast  | Custom color scheme for dark mode.                    |
-| fontSize            | double             | 14.0                           | Font size for the code text.                          |
-| lineHeight          | double             | 1.35                           | Height of each line of code.                          |
-| showLineNumbers     | bool               | true                           | Displays line numbers next to the code.               |
-| enableCodeSelection | bool               | true                           | Allows selection of the displayed text.               |
-| maxCharCount        | int?               | null                           | Maximum number of characters for the line numbering.  |
-| lineNumberOffset    | int                | 1                              | The starting number for line count.                   |
+| Property            | Type               | Default                  | Description                                          |
+| ------------------- | ------------------ | ------------------------ | ---------------------------------------------------- |
+| code                | String             | –                        | The source code to be displayed.                     |
+| isDarkMode          | bool               | false                    | Toggles between light and dark mode.                 |
+| darkColorSchema     | SyntaxColorSchema? | SyntaxThemes.vsCodeDark  | Custom color scheme for dark mode.                   |
+| lightColorSchema    | SyntaxColorSchema? | SyntaxThemes.vsCodeLight | Custom color scheme for light mode.                  |
+| fontSize            | double             | 14.0                     | Font size for the code text.                         |
+| lineHeight          | double             | 1.35                     | Height of each line of code.                         |
+| showLineNumbers     | bool               | true                     | Displays line numbers next to the code.              |
+| enableCodeSelection | bool               | true                     | Allows selection of the displayed text.              |
+| maxCharCount        | int?               | null                     | Maximum number of characters for the line numbering. |
+| lineNumberOffset    | int                | 1                        | The starting number for line count.                  |
 
 ## Contributing
 

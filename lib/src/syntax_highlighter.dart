@@ -11,8 +11,8 @@ class SyntaxHighlighter extends StatefulWidget {
     super.key,
     required this.code,
     this.isDarkMode = false,
-    this.lightColorSchema,
     this.darkColorSchema,
+    this.lightColorSchema,
     this.fontSize = 14.0,
     this.lineHeight = 1.35,
     this.showLineNumbers = true,
@@ -27,11 +27,11 @@ class SyntaxHighlighter extends StatefulWidget {
   /// Whether to use the dark theme.
   final bool isDarkMode;
 
-  /// The syntax theme to use when the brightness is light.
-  final SyntaxColorSchema? lightColorSchema;
-
   /// The syntax theme to use when the brightness is dark.
   final SyntaxColorSchema? darkColorSchema;
+
+  /// The syntax theme to use when the brightness is light.
+  final SyntaxColorSchema? lightColorSchema;
 
   /// Font size for the code.
   final double fontSize;
@@ -64,8 +64,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
   void _setupAndProcess() {
     _syntaxColorSchema = widget.isDarkMode
-        ? (widget.darkColorSchema ?? SyntaxThemes.darkHighContrast)
-        : (widget.lightColorSchema ?? SyntaxThemes.lightHighContrast);
+        ? (widget.darkColorSchema ?? SyntaxThemes.vsCodeDark)
+        : (widget.lightColorSchema ?? SyntaxThemes.vsCodeLight);
     _highlighter = Highlighter(_syntaxColorSchema);
 
     _maxDigits =
@@ -157,8 +157,8 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
 
     if (oldWidget.code != widget.code ||
         oldWidget.isDarkMode != widget.isDarkMode ||
-        oldWidget.lightColorSchema != widget.lightColorSchema ||
         oldWidget.darkColorSchema != widget.darkColorSchema ||
+        oldWidget.lightColorSchema != widget.lightColorSchema ||
         oldWidget.fontSize != widget.fontSize ||
         oldWidget.lineNumberOffset != widget.lineNumberOffset) {
       _setupAndProcess();
