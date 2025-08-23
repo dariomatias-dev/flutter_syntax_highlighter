@@ -26,8 +26,6 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 <img src="https://img.shields.io/pub/popularity/flutter_syntax_highlighter" alt="Pub Popularity">
 </div>
 
----
-
 ## Table of Contents
 
 - [About The Project](#about-the-project)
@@ -43,15 +41,11 @@ A widget for syntax highlighting of Dart and Flutter code, with support for ligh
 - [License](#license)
 - [Author](#author)
 
----
-
 ## About The Project
 
 Flutter Syntax Highlighter is a widget designed to display Dart and Flutter code blocks cleanly and legibly within a Flutter application. It formats the code with appropriate colors and styles, simulating the appearance of a professional code editor.
 
 The package supports multiple themes, both light and dark, and allows for customizations such as displaying line numbers and enabling text selection, making it ideal for tutorials, documentation, or any app that needs to present source code elegantly.
-
----
 
 ## Features
 
@@ -63,14 +57,10 @@ The package supports multiple themes, both light and dark, and allows for custom
 - **Code Selection:** Allows users to select and copy text from the code block.
 - **Easy to Use:** Simple integration with a single widget.
 
----
-
 ## Built With
 
 - **[Flutter](https://flutter.dev/)** – A UI toolkit by Google for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.  
 - **[Dart](https://dart.dev/)** – The programming language used for Flutter, optimized for building fast apps on any platform.
-
----
 
 ## Screenshots
 
@@ -106,8 +96,6 @@ Below you can find previews for all the themes provided by the package:
 | Xcode Light          | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_light.jpg" width="300" />          |
 | Xcode Dark           | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_dark.jpg" width="300" />           |
 
----
-
 ## Getting Started
 
 To install the package, run the following command in your project terminal:
@@ -115,8 +103,6 @@ To install the package, run the following command in your project terminal:
 ```bash
 flutter pub add flutter_syntax_highlighter
 ```
-
----
 
 ## Usage
 
@@ -438,8 +424,6 @@ class _MyAppState extends State<MyApp> {
 }
 ```
 
----
-
 ## Properties
 
 | Property            | Type               | Default                        | Description                                           |
@@ -454,8 +438,6 @@ class _MyAppState extends State<MyApp> {
 | enableCodeSelection | bool               | true                           | Allows selection of the displayed text.               |
 | maxCharCount        | int?               | null                           | Maximum number of characters for the line numbering.  |
 | lineNumberOffset    | int                | 1                              | The starting number for line count.                   |
-
----
 
 ## Contributing
 
@@ -480,13 +462,9 @@ git push origin feature/AmazingFeature
 
 5. Open a Pull Request.
 
----
-
 ## License
 
 Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
-
----
 
 ## Author
 
