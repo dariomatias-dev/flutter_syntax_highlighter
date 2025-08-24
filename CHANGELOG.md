@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Fixed formatting of the `vs_code_dark_theme` file.
+
 ## 0.2.0
 
 - Added a large set of new syntax highlighting themes.
