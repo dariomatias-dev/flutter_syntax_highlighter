@@ -66,35 +66,50 @@ The package supports multiple themes, both light and dark, and allows for custom
 
 Below you can find previews for all the themes provided by the package:
 
-| Theme                | Preview                                                                                                                                                     |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A11y Light           | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/a11y_light.jpg" width="300" />           |
-| A11y Dark            | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/a11y_dark.jpg" width="300" />            |
-| Android Studio Light | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/android_studio_light.jpg" width="300" /> |
-| Android Studio Dark  | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/android_studio_dark.jpg" width="300" />  |
-| Atom One Light       | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/atom_one_light.jpg" width="300" />       |
-| Atom One Dark        | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/atom_one_dark.jpg" width="300" />        |
-| Cobalt2              | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/cobalt2.jpg" width="300" />              |
-| Dark High Contrast   | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/dark_high_contrast.jpg" width="300" />   |
-| Dracula              | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/dracula.jpg" width="300" />              |
-| GitHub Light         | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/github_light.jpg" width="300" />         |
-| GitHub Dark          | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/github_dark.jpg" width="300" />          |
-| Light High Contrast  | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/light_high_contrast.jpg" width="300" />  |
-| Material Oceanic     | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/material_oceanic.jpg" width="300" />     |
-| Monokai              | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/monokai.jpg" width="300" />              |
-| Night Owl            | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/night_owl.jpg" width="300" />            |
-| Nord                 | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/nord.jpg" width="300" />                 |
-| One Dark Pro         | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/one_dark_pro.jpg" width="300" />         |
-| Panda Syntax         | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/panda_syntax.jpg" width="300" />         |
-| Solarized Light      | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/solarized_light.jpg" width="300" />      |
-| Solarized Dark       | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/solarized_dark.jpg" width="300" />       |
-| StackOverflow Light  | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/stack_overflow_light.jpg" width="300" /> |
-| StackOverflow Dark   | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/stack_overflow_dark.jpg" width="300" />  |
-| SynthWave84          | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/synthwave84.jpg" width="300" />          |
-| VSCode Light         | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/vs_code_light.jpg" width="300" />        |
-| VSCode Dark          | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/vs_code_dark.jpg" width="300" />         |
-| Xcode Light          | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_light.jpg" width="300" />          |
-| Xcode Dark           | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_dark.jpg" width="300" />           |
+| Theme 1 | Theme 2 | Theme 3 |
+|---------|---------|---------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/a11y_light.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/a11y_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/android_studio_light.jpg" width="300" /> |
+| **A11y Light** | **A11y Dark** | **Android Studio Light** |
+
+| Theme 4 | Theme 5 | Theme 6 |
+|---------|---------|---------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/android_studio_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/atom_one_light.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/atom_one_dark.jpg" width="300" /> |
+| **Android Studio Dark** | **Atom One Light** | **Atom One Dark** |
+
+| Theme 7 | Theme 8 | Theme 9 |
+|---------|---------|---------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/cobalt2.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/dark_high_contrast.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/dracula.jpg" width="300" /> |
+| **Cobalt2** | **Dark High Contrast** | **Dracula** |
+
+| Theme 10 | Theme 11 | Theme 12 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/github_light.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/github_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/light_high_contrast.jpg" width="300" /> |
+| **GitHub Light** | **GitHub Dark** | **Light High Contrast** |
+
+| Theme 13 | Theme 14 | Theme 15 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/material_oceanic.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/monokai.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/night_owl.jpg" width="300" /> |
+| **Material Oceanic** | **Monokai** | **Night Owl** |
+
+| Theme 16 | Theme 17 | Theme 18 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/nord.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/one_dark_pro.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/panda_syntax.jpg" width="300" /> |
+| **Nord** | **One Dark Pro** | **Panda Syntax** |
+
+| Theme 19 | Theme 20 | Theme 21 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/solarized_light.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/solarized_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/stack_overflow_light.jpg" width="300" /> |
+| **Solarized Light** | **Solarized Dark** | **StackOverflow Light** |
+
+| Theme 22 | Theme 23 | Theme 24 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/stack_overflow_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/synthwave84.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/vs_code_light.jpg" width="300" /> |
+| **StackOverflow Dark** | **SynthWave84** | **VSCode Light** |
+
+| Theme 25 | Theme 26 | Theme 27 |
+|----------|----------|----------|
+| <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/vs_code_dark.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_light.jpg" width="300" /> | <img src="https://raw.githubusercontent.com/dariomatias-dev/flutter_syntax_highlighter/refs/heads/main/screenshots/xcode_dark.jpg" width="300" /> |
+| **VSCode Dark** | **Xcode Light** | **Xcode Dark** |
 
 ## Getting Started
 
