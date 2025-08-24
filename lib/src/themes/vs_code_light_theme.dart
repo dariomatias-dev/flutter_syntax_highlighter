@@ -5,13 +5,13 @@ class VSCodeLightTheme extends SyntaxColorSchema {
   const VSCodeLightTheme()
     : super(
         baseStyle: const Color(0xFF000000),
-        lineNumberStyle: const Color(0xFF858585),
+        lineNumberStyle: const Color.fromARGB(179, 0, 0, 0),
         keywordStyle: const Color(0xFF0000FF),
         specialKeywordStyle: const Color(0xFF0000FF),
-        storageModifierStyle: const Color(0xFFAF00DB),
+        storageModifierStyle: const Color(0xFF0000FF),
         typeStyle: const Color(0xFF267F99),
-        functionStyle: const Color(0xFF795E26),
-        literalStyle: const Color(0xFF0000FF),
+        functionStyle: const Color(0xFF000000),
+        literalStyle: const Color(0xFF000000),
         commentStyle: const Color(0xFF008000),
         punctuationStyle: const Color(0xFF000000),
         stringStyle: const Color(0xFFA31515),
@@ -19,6 +19,6 @@ class VSCodeLightTheme extends SyntaxColorSchema {
         bracket1Style: const Color(0xFF000000),
         bracket2Style: const Color(0xFF0000FF),
         bracket3Style: const Color(0xFF267F99),
-        variableStyle: const Color(0xFF001080),
+        variableStyle: const Color(0xFF0070C1),
       );
 }
