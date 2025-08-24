@@ -4,12 +4,12 @@ import 'package:flutter_syntax_highlighter/src/syntax_color_schema.dart';
 import 'package:flutter_syntax_highlighter/src/syntax_token.dart';
 import 'package:flutter_syntax_highlighter/src/token_type.dart';
 
-/// A syntax highlighter that tokenizes and styles source code.
+/// A syntax highlighter that tokenizes and Colors source code.
 ///
-/// This class parses a source code string into a list of styled tokens
+/// This class parses a source code string into a list of Colord tokens
 /// for syntax highlighting purposes.
 class Highlighter {
-  /// The theme that defines the styles for different token types.
+  /// The theme that defines the Colors for different token types.
   final SyntaxColorSchema syntaxColorSchema;
 
   late final RegExp _combinedPattern;
@@ -50,39 +50,39 @@ class Highlighter {
   ///
   /// The color is determined by the token's [TokenType]. For brackets,
   /// the nesting level is used to cycle through three different colors.
-  Color getStyleForToken(SyntaxToken token) {
+  Color getColorForToken(SyntaxToken token) {
     switch (token.type) {
       case TokenType.bracket:
         final level = token.level % 3;
-        if (level == 0) return syntaxColorSchema.bracket1Style;
-        if (level == 1) return syntaxColorSchema.bracket2Style;
-        return syntaxColorSchema.bracket3Style;
+        if (level == 0) return syntaxColorSchema.bracket1Color;
+        if (level == 1) return syntaxColorSchema.bracket2Color;
+        return syntaxColorSchema.bracket3Color;
 
       case TokenType.keyword:
-        return syntaxColorSchema.keywordStyle;
+        return syntaxColorSchema.keywordColor;
       case TokenType.specialKeyword:
-        return syntaxColorSchema.specialKeywordStyle;
+        return syntaxColorSchema.specialKeywordColor;
       case TokenType.storageModifier:
-        return syntaxColorSchema.storageModifierStyle;
+        return syntaxColorSchema.storageModifierColor;
       case TokenType.type:
-        return syntaxColorSchema.typeStyle;
+        return syntaxColorSchema.typeColor;
       case TokenType.function:
-        return syntaxColorSchema.functionStyle;
+        return syntaxColorSchema.functionColor;
       case TokenType.comment:
-        return syntaxColorSchema.commentStyle;
+        return syntaxColorSchema.commentColor;
       case TokenType.string:
-        return syntaxColorSchema.stringStyle;
+        return syntaxColorSchema.stringColor;
       case TokenType.number:
-        return syntaxColorSchema.numberStyle;
+        return syntaxColorSchema.numberColor;
       case TokenType.literal:
-        return syntaxColorSchema.literalStyle;
+        return syntaxColorSchema.literalColor;
       case TokenType.variable:
-        return syntaxColorSchema.variableStyle;
+        return syntaxColorSchema.variableColor;
       case TokenType.punctuation:
-        return syntaxColorSchema.punctuationStyle;
+        return syntaxColorSchema.punctuationColor;
       case TokenType.identifier:
       case TokenType.newline:
-        return syntaxColorSchema.baseStyle;
+        return syntaxColorSchema.baseColor;
     }
   }
 

@@ -100,7 +100,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
               TextSpan(
                 text: line,
                 style: TextStyle(
-                  color: _highlighter.getStyleForToken(token),
+                  color: _highlighter.getColorForToken(token),
                   fontSize: widget.fontSize,
                 ),
               ),
@@ -116,7 +116,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
           TextSpan(
             text: token.value,
             style: TextStyle(
-              color: _highlighter.getStyleForToken(token),
+              color: _highlighter.getColorForToken(token),
               fontSize: widget.fontSize,
             ),
           ),
@@ -186,7 +186,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
                     lineNumber.toString(),
                     textAlign: TextAlign.right,
                     style: TextStyle(
-                      color: _syntaxColorSchema.lineNumberStyle,
+                      color: _syntaxColorSchema.lineNumberColor,
                       height: widget.lineHeight,
                       fontSize: widget.fontSize,
                     ),
@@ -197,7 +197,7 @@ class _SyntaxHighlighterState extends State<SyntaxHighlighter> {
               child: Text.rich(
                 line,
                 style: TextStyle(
-                  color: _syntaxColorSchema.baseStyle,
+                  color: _syntaxColorSchema.baseColor,
                   height: widget.lineHeight,
                 ),
               ),

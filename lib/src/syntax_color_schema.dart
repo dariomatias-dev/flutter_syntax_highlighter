@@ -14,84 +14,83 @@ import 'package:flutter/material.dart';
 /// class MyCustomTheme extends SyntaxColorSchema {
 ///   const MyCustomTheme()
 ///       : super(
-///           baseStyle: const Color(0xFFFFFFFF),
-///           commentStyle: const Color(0xFF9E9E9E),
-///           keywordStyle: const Color(0xFF82AAFF),
+///           baseColor: const Color(0xFFFFFFFF),
+///           commentColor: const Color(0xFF9E9E9E),
+///           keywordColor: const Color(0xFF82AAFF),
 ///           // ... other colors
 ///         );
 /// }
 /// ```
 abstract class SyntaxColorSchema {
   const SyntaxColorSchema({
-    required this.baseStyle,
-    required this.lineNumberStyle,
-    required this.keywordStyle,
-    required this.specialKeywordStyle,
-    required this.storageModifierStyle,
-    required this.typeStyle,
-    required this.functionStyle,
-    required this.literalStyle,
-    required this.commentStyle,
-    required this.punctuationStyle,
-    required this.stringStyle,
-    required this.numberStyle,
-    required this.bracket1Style,
-    required this.bracket2Style,
-    required this.bracket3Style,
-    required this.variableStyle,
+    required this.baseColor,
+    required this.lineNumberColor,
+    required this.keywordColor,
+    required this.specialKeywordColor,
+    required this.storageModifierColor,
+    required this.typeColor,
+    required this.functionColor,
+    required this.literalColor,
+    required this.commentColor,
+    required this.punctuationColor,
+    required this.stringColor,
+    required this.numberColor,
+    required this.bracket1Color,
+    required this.bracket2Color,
+    required this.bracket3Color,
+    required this.variableColor,
   });
 
-  /// Base text color applied to code fragments without a specific style.
-  /// Typically used for plain text, operators, and whitespace.
-  final Color baseStyle;
+  /// Base color applied to code fragments that do not have a specific color.
+  final Color baseColor;
 
   /// Color assigned to line numbers displayed in the side gutter.
-  final Color lineNumberStyle;
+  final Color lineNumberColor;
 
   /// Color for language keywords (e.g., `if`, `for`, `while`, `class`, `void`).
-  final Color keywordStyle;
+  final Color keywordColor;
 
   /// Color for special keywords that modify control flow.
   ///
   /// Examples: `return`, `await`, `yield`, `break`.
-  /// Can match [keywordStyle] if the theme does not differentiate.
-  final Color specialKeywordStyle;
+  /// Can match [keywordColor] if the theme does not differentiate.
+  final Color specialKeywordColor;
 
   /// Color applied to storage modifiers (e.g., `const`, `final`, `static`).
-  final Color storageModifierStyle;
+  final Color storageModifierColor;
 
   /// Color for type names, including native types and user-defined classes
   /// (e.g., `int`, `String`, `List`, `MyClass`).
-  final Color typeStyle;
+  final Color typeColor;
 
   /// Color used for function and method names.
-  final Color functionStyle;
+  final Color functionColor;
 
   /// Color for language literals (e.g., `true`, `false`, `null`).
-  final Color literalStyle;
+  final Color literalColor;
 
   /// Color applied to code comments.
-  final Color commentStyle;
+  final Color commentColor;
 
   /// Color for punctuation characters (e.g., comma, semicolon, colon).
-  final Color punctuationStyle;
+  final Color punctuationColor;
 
   /// Color applied to string literals (e.g., `"Hello, World!"`).
-  final Color stringStyle;
+  final Color stringColor;
 
   /// Color used for numeric literals (e.g., `123`, `0.5`, `0xFF`).
-  final Color numberStyle;
+  final Color numberColor;
 
   /// Color for the first type of brackets.
-  final Color bracket1Style;
+  final Color bracket1Color;
 
   /// Color for the second type of brackets.
-  final Color bracket2Style;
+  final Color bracket2Color;
 
   /// Color for the third type of brackets.
-  final Color bracket3Style;
+  final Color bracket3Color;
 
   /// Color applied to variables, including local variables, parameters,
   /// and class attributes.
-  final Color variableStyle;
+  final Color variableColor;
 }
