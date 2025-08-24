@@ -1,8 +1,18 @@
+## 0.2.0
+
+- Added a large set of new syntax highlighting themes.
+- Introduced `darkColorSchema` and `lightColorSchema` properties to define separate themes for dark and light modes, with `VSCodeDarkTheme` and `VSCodeLightTheme` set as defaults.
+- Added `lineNumberOffset` property to specify the starting number for line numbering.
+- Support for custom themes by extending `SyntaxColorSchema` and assigning them to `darkColorSchema` or `lightColorSchema`.
+- Added screenshots for all themes to preview their appearance.
+- Documentation updated and standardized for greater clarity.
+
 ## 0.1.7
 
 - Added `lineNumberOffset` property to define the initial value of line numbering.
 
 ## 0.1.6
+
 - Added `maxCharCount` property to define the maximum number of characters in the line numbering.
 
 ## 0.1.5
